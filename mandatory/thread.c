@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 10:38:33 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/14 12:38:35 by jofilipe         ###   ########.fr       */
+/*   Created: 2023/09/14 11:50:25 by jofilipe          #+#    #+#             */
+/*   Updated: 2023/09/14 12:40:17 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	error_message(char c)
+int	thread_init(pthread_t *thread)
 {
-	if (c == 'i')
-		ft_putstr_fd("Error initiating mutex!", 2);
-	else if (c == 'd')
-		ft_putstr_fd("Error destroying mutex!", 2);
-	else if (c == 'l')
-		ft_putstr_fd("Error locking mutex!", 2);
-	else if (c == 'u')
-		ft_putstr_fd("Error unlocking mutex!", 2);
-	else if (c == 'c')
-		ft_putstr_fd("Error creating thread!", 2);
-	else if (c == 'j')
-		ft_putstr_fd("Error joining thread!", 2);
-	return(-1);
+	if (pthread_create(thread, NULL, &FUNCAO_PRINCIPAL, NULL))
+		return(error_message('c'));
+	return(0);
+}
+
+int	thread_join(pthread_t *thread)
+{
+	if (pthread_join(thread, NULL))
+		return(error_message('j'));
+	return(0);
 }

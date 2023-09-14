@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:58:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/13 11:06:59 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:40:51 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void				ft_putstr_fd(char *s, int fd);
 /* ------inits------ */
 void				philo_init(t_philos *philos);
 void				data_init(t_data *data, int argc, char **argv);
-int					thread_init(t_data *data);
+
 
 
 /* ------mutex------ */
@@ -71,7 +71,12 @@ int				mutex_lock(pthread_mutex_t *mutex);
 int				mutex_unlock(pthread_mutex_t *mutex);
 
 /* ------utils------ */
-int					error_message(char c);
+int				error_message(char c);
+
+
+/* ------thread------ */
+int				thread_init(pthread_t *thread);
+int				thread_join(pthread_t *thread);
 
 
 #endif

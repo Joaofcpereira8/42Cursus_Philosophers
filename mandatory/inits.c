@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:50:38 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/12 15:06:56 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:50:32 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,3 @@ void	data_init(t_data *data, int argc, char **argv)
 	mutex_init(&data->error_print);
 }
 
-int	thread_init(t_data *data)
-{
-	int	i;
-	int	num_th;
-
-	i = 0;
-	num_th = malloc(sizeof(pthread_t) * data->num_philos);
-	while (i < data->num_philos)
-	{
-		if (pthread_create(&num_th, NULL, &FUNCAO_PRINCIPAL, NULL) != 0)
-		{
-			printf("Error while creating threads!");
-			return(-1);
-		}
-		i++;
-	}
-	return(0);
-}
