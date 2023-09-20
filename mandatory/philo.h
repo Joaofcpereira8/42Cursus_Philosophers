@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:58:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/20 01:06:17 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:24:17 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,26 +59,30 @@ int					ft_isdigit(int c);
 int					check_num(char **argv);
 
 
+/* ------ft_fnctns------ */
+long long			get_time();
+
 
 /* ------inits------ */
-void				philo_init(t_philos *philos);
-void				data_init(t_data *data, int argc, char **argv);
-
+t_philos			*philo_init(t_data *data);
+int					structs_init(t_data *data, int argc, char **argv);
+int					forks_init(int num_philo);
 
 
 /* ------mutex------ */
-int				mutex_init(pthread_mutex_t *mutex);
-int				mutex_destroy(pthread_mutex_t *mutex);
-int				mutex_lock(pthread_mutex_t *mutex);
-int				mutex_unlock(pthread_mutex_t *mutex);
+int					mutex_init(pthread_mutex_t *mutex);
+int					mutex_destroy(pthread_mutex_t *mutex);
+int					mutex_lock(pthread_mutex_t *mutex);
+int					mutex_unlock(pthread_mutex_t *mutex);
 
 /* ------utils------ */
-int				error_message(char c);
+int					error_message(char c);
 
 
 /* ------thread------ */
-int				thread_init(pthread_t *thread);
-int				thread_join(pthread_t *thread);
+int					thread_init(pthread_t *thread);
+int					thread_join(pthread_t *thread);
+
 
 
 #endif

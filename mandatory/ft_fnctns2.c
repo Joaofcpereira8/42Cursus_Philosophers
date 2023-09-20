@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_fnctns2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 17:34:58 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/20 17:37:06 by jofilipe         ###   ########.fr       */
+/*   Created: 2023/09/20 12:01:09 by jofilipe          #+#    #+#             */
+/*   Updated: 2023/09/20 12:07:27 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int argc, char **argv)
+long long	get_time()
 {
-	t_data		*data;
-	t_philos	*philos;
+	struct	timeval tv;
 
-	if (argc == 5 || argc == 6)
-	{
-		if (check_num(argv))
-			return (-1);
-		structs_init(data, argc, argv);
-		/* fazer as threads e mutexes */
-		/* dar join das threads */
-		/* no final, dar free a tudo */
-	}
-	else
-		printf("Check args");
-	return (0);
+	gettimeofday(&tv, NULL);
+	return ((long long)(tv.tv_sec) * 1000 + (long long)(tv.tv_usec) / 1000);
 }
+/* struct timeval tv is used to store the time information. */
