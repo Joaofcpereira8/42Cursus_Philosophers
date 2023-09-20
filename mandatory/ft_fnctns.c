@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:00:36 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/13 10:41:00 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/20 01:05:02 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,34 @@ void	ft_putstr_fd(char *s, int fd)
 		write(fd, &s[i], 1);
 		i++;
 	}
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+int	check_num(char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (*argv[i])
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (ft_isdigit(argv[i][j] == 0))
+			{
+				error_message('c');
+				return (-1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

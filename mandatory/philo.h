@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:58:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/14 12:40:51 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/20 01:06:17 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_data
 static int			ft_see_spaces(const char *str, int *ptr_i);
 int					ft_atoi(const char *str);
 void				ft_putstr_fd(char *s, int fd);
+int					ft_isdigit(int c);
+int					check_num(char **argv);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:34:58 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/11 17:50:17 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/20 01:11:05 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 int main(int argc, char **argv)
 {
+	t_data		*data;
+	t_philos	*philos;
+	
 	if (argc == 5 || argc == 6)
 	{
-		/* função check arguments */
-		/* struturas inits */
+		if (check_num(argv))
+			return (-1);
+		philo_init(philos);
+		data_init(data, argc, argv);
 		/* fazer as threads e mutexes */
 		/* dar join das threads */
 		/* no final, dar free a tudo */
