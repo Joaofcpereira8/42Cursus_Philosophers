@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:34:58 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/20 17:37:06 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:27:27 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int main(int argc, char **argv)
 	{
 		if (check_num(argv))
 			return (-1);
-		structs_init(data, argc, argv);
-		/* fazer as threads e mutexes */
+		if(structs_init(data, argc, argv))
+			return (-1);
+		ft_thread(data);
 		/* dar join das threads */
 		/* no final, dar free a tudo */
 	}

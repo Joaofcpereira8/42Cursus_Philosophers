@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:56:32 by jofilipe          #+#    #+#              #
-#    Updated: 2023/09/14 15:45:48 by jofilipe         ###   ########.fr        #
+#    Updated: 2023/09/21 14:51:05 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ CFLAGS = -Wall -Wextra -Werror -pthread -fsanitize=thread
 RM = rm -rf
 
 SRCS = main.c\
-		ft_functions.c\
+		ft_fnctns.c\
+		ft_fnctns2.c\
 		inits.c\
 		thread.c\
 		mutex.c\

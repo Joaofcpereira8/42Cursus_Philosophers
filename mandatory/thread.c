@@ -6,22 +6,24 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:50:25 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/14 12:40:17 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:27:05 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	thread_init(pthread_t *thread)
+int	ft_thread(t_data *data)
 {
-	if (pthread_create(thread, NULL, &FUNCAO_PRINCIPAL, NULL))
-		return(error_message('c'));
-	return(0);
-}
+	int	i;
 
-int	thread_join(pthread_t *thread)
-{
-	if (pthread_join(thread, NULL))
-		return(error_message('j'));
-	return(0);
+	i = 0;
+	while (i < data->num_philos)
+	{
+		if(pthread_create(&data->philos[i], NULL, &ft_routine, &data->philos[i]))
+			return(error_message('c'));
+		usleep(1000);
+		i++;
+	}
+	if(pthread_create(&data->doc, NULL, &ft_doc_watch, data))
+		return (error_message('c'));
 }

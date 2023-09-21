@@ -6,13 +6,18 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:41:07 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/14 14:20:11 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:24:32 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*routine(void)
+void	*ft_routine(void)
+{
+
+}
+
+void	*ft_doc_watch(void)
 {
 	
 }

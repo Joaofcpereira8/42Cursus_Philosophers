@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:58:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/20 17:24:17 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:26:59 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_data
 	int				all_ate;
 	int				died;
 	long long		time_start;
-	pthread_t		thread;
+	pthread_t		doc;
 	pthread_mutex_t	mutex;
 	pthread_mutex_t	error_print;
 	pthread_mutex_t	*forks;
@@ -59,14 +59,14 @@ int					ft_isdigit(int c);
 int					check_num(char **argv);
 
 
-/* ------ft_fnctns------ */
+/* ------ft_fnctns2------ */
 long long			get_time();
 
 
 /* ------inits------ */
 t_philos			*philo_init(t_data *data);
 int					structs_init(t_data *data, int argc, char **argv);
-int					forks_init(int num_philo);
+pthread_mutex_t		*forks_init(int num_philo);
 
 
 /* ------mutex------ */
@@ -77,12 +77,16 @@ int					mutex_unlock(pthread_mutex_t *mutex);
 
 /* ------utils------ */
 int					error_message(char c);
+int					verifs(t_data *data);
+int					verifs2(t_data *data);
+
+/* ------routine------ */
+void				*ft_routine(void);
+void				*ft_doc_watch(void);
 
 
 /* ------thread------ */
-int					thread_init(pthread_t *thread);
-int					thread_join(pthread_t *thread);
-
+int					ft_thread(t_data *data);
 
 
 #endif
