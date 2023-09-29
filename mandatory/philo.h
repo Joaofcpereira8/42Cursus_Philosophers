@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:58:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/21 18:26:59 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:26:52 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,7 @@
 # include <limits.h>
 # include <pthread.h>
 # include <sys/time.h>
-
-typedef struct s_philo
-{
-	int				id;
-	int				times_eaten;
-	long long		last_meal;
-	pthread_t		philos;
-	pthread_t		thread;
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*l_fork;
-	pthread_mutex_t	arceus;
-	t_data			*data;
-}				t_philos;
+# include <string.h>
 
 typedef struct s_data
 {
@@ -45,23 +33,30 @@ typedef struct s_data
 	long long		time_start;
 	pthread_t		doc;
 	pthread_mutex_t	mutex;
-	pthread_mutex_t	error_print;
+	pthread_mutex_t	print;
 	pthread_mutex_t	*forks;
-	t_philos		*philos;
+	struct s_philos	*philos;
 }				t_data;
 
+typedef struct s_philos
+{
+	int				id;
+	int				times_eaten;
+	long long		last_meal;
+	pthread_t		philos;
+	pthread_t		thread;
+	pthread_mutex_t	*r_fork;
+	pthread_mutex_t	*l_fork;
+	pthread_mutex_t	arceus;
+	t_data			*data;
+}				t_philos;
 
 /* ------ft_fnctns------ */
-static int			ft_see_spaces(const char *str, int *ptr_i);
 int					ft_atoi(const char *str);
 void				ft_putstr_fd(char *s, int fd);
 int					ft_isdigit(int c);
 int					check_num(char **argv);
-
-
-/* ------ft_fnctns2------ */
 long long			get_time();
-
 
 /* ------inits------ */
 t_philos			*philo_init(t_data *data);
@@ -79,14 +74,23 @@ int					mutex_unlock(pthread_mutex_t *mutex);
 int					error_message(char c);
 int					verifs(t_data *data);
 int					verifs2(t_data *data);
+void				print_msg(char *msg, t_philos *philos);
+void				print_message(char *str);
 
 /* ------routine------ */
-void				*ft_routine(void);
-void				*ft_doc_watch(void);
+void				*ft_routine(void *arg);
+int					grab_forks(t_philos *philos);
+int					eating(t_philos *phi);
+int					sleeping(t_philos *phi);
+int					thinking(t_philos *philos);
 
+/* ------mntrng------ */
+void				*ft_doc_watch(void *arg);
+int					check_philo_dead(t_data *data);
+int					check_philo_ate(t_data *data);
 
 /* ------thread------ */
-int					ft_thread(t_data *data);
-
+void				ft_thread(t_data *data);
+int					ft_thread_join(t_data *data);
 
 #endif

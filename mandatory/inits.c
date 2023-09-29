@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:50:38 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/21 15:03:01 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:06:24 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	structs_init(t_data *data, int argc, char **argv)
 	data->time_to_die = ft_atoi(argv[2]);
 	data->time_to_eat = ft_atoi(argv[3]);
 	data->time_to_sleep = ft_atoi(argv[4]);
-	if (argv[5])
+	if (argc == 6)
 		data->times_to_eat = ft_atoi(argv[5]);
 	else
 		data->times_to_eat = -1;
@@ -35,11 +35,12 @@ int	structs_init(t_data *data, int argc, char **argv)
 	data->died = 0;
 	data->time_start = 0;
 	mutex_init(&data->mutex);
-	mutex_init(&data->error_print);
-	verifs(&data);
-	data->philos = philo_init(&data->num_philos);
-	data->forks = forks_init(&data->num_philos);
-	verifs2(&data);
+	mutex_init(&data->print);
+	verifs(data);
+	data->philos = philo_init(data);
+	data->forks = forks_init(data->num_philos);
+	verifs2(data);
+	return (0);
 }
 
 t_philos	*philo_init(t_data *data)
@@ -56,11 +57,9 @@ t_philos	*philo_init(t_data *data)
 		philos[i].id = i + 1;
 		philos[i].last_meal = get_time();
 		philos[i].times_eaten = 0;
-		philos[i].l_fork = &data->forks;
+		philos[i].l_fork = data->forks;
 		if (data->num_philos != 1)
-		{
 			philos[i].r_fork = &data->forks[(i + 1) % data->num_philos];
-		}
 		philos[i].data = data;
 		mutex_init(&philos[i].arceus);
 		i++;
@@ -79,7 +78,7 @@ pthread_mutex_t	*forks_init(int num_philo)
 		return (NULL);
 	while (i < num_philo)
 	{
-		mutex_init(&forks);
+		mutex_init(forks);
 		i++;
 	}
 	return (forks);

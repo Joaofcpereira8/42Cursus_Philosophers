@@ -6,51 +6,39 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:00:36 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/20 01:05:02 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/29 12:46:10 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	ft_see_spaces(const char *str, int *ptr_i)
-{
-	int	negative;
-	int	i;
-
-	i = 0;
-	negative = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			negative = -1;
-		i++;
-	}
-	*ptr_i = i;
-	return (negative);
-}
-
 int	ft_atoi(const char *str)
 {
-	int		i;
-	int		result;
-	int		negative;
+	unsigned int	i;
+	long			sign;
+	long			result;
 
 	i = 0;
+	sign = 1;
 	result = 0;
-	negative = ft_see_spaces(str, &i);
-	while (str[i] >= 48 && str[i] <= 57)
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 	{
-		result = (result * 10) + (str[i] - '0');
 		i++;
 	}
-	if (str[i] == '\0')
+	if (str[i] == '-')
 	{
-		result *= negative;
-		return (result);
+		sign = -1;
+		i++;
 	}
-	return (0);
+	else if (str[i] == '+')
+	i++;
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	{
+		result *= 10;
+		result += str[i] - '0';
+		i++;
+	}
+	return (result * sign);
 }
 
 void	ft_putstr_fd(char *s, int fd)

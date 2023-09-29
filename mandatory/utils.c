@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:38:33 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/21 15:02:38 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:02:42 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,29 @@ int	verifs2(t_data *data)
 		return (-1);
 	}
 	return (0);
+}
+
+void	print_msg(char *msg, t_philos *philos)
+{
+	long long time;
+
+	mutex_lock(&philos->data->mutex);
+	if (philos->data->died >= 1 || &philos->data->all_ate == &philos->data->num_philos)
+	{
+		mutex_unlock(&philos->data->mutex);
+		return ;
+	}
+	mutex_unlock(&philos->data->mutex);
+	time = get_time() - philos->data->time_start;
+	mutex_lock(&philos->data->print);
+	printf("%lld %d %s", time, philos->id, msg);
+	mutex_unlock(&philos->data->print);
+	return ;
+}
+
+void	print_message(char *str)
+{
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(str, 2);
+	return ;
 }
