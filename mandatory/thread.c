@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:50:25 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/29 14:28:08 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:29:40 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,3 @@ int	ft_thread_join(t_data *data)
 	mutex_destroy(&data->mutex);
 	return (0);
 }
-
-long long	get_time()
-{
-	struct	timeval tv;
-
-	gettimeofday(&tv, NULL);
-	return ((long long)(tv.tv_sec) * 1000 + (long long)(tv.tv_usec) / 1000);
-}
-/* struct timeval tv is used to store the time information. */

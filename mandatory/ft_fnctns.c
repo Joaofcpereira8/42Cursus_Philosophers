@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:00:36 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/29 12:46:10 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:42:39 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ int	check_num(char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (ft_isdigit(argv[i][j] == 0))
+			if (ft_isdigit(argv[i][j]) == 0)
 			{
-				error_message('c');
+				error_message('n');
 				return (-1);
 			}
 			j++;
@@ -84,3 +84,12 @@ int	check_num(char **argv)
 	}
 	return (0);
 }
+
+long long	get_time()
+{
+	struct	timeval tv;
+
+	gettimeofday(&tv, NULL);
+	return ((long long)(tv.tv_sec) * 1000 + (long long)(tv.tv_usec) / 1000);
+}
+/* struct timeval tv is used to store the time information. */
