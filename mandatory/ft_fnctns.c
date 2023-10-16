@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:00:36 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/29 16:42:39 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:40:22 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	ft_putstr_fd(char *s, int fd)
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+		return (0);
+	return (-1);
 }
 
 int	check_num(char **argv)
@@ -67,13 +67,13 @@ int	check_num(char **argv)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (*argv[i])
+	i = 1;
+	while (argv[i])
 	{
 		j = 0;
 		while (argv[i][j])
 		{
-			if (ft_isdigit(argv[i][j]) == 0)
+			if (ft_isdigit(argv[i][j]) == -1)
 			{
 				error_message('n');
 				return (-1);
