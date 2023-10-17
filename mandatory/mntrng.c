@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mntrng.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 10:00:44 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/29 15:05:48 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:27:33 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int	check_philo_dead(t_data *data)
 int	check_philo_ate(t_data *data)
 {
 	if (data->times_to_eat == -1)
-		return (-1);
+		return (0);
 	mutex_lock(&data->mutex);
-	if (data->all_ate == data->times_to_eat)
+	if (data->all_ate == data->num_philos)
 	{
 		mutex_unlock(&data->mutex);
 		return(-1);

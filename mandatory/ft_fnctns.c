@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fnctns.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:00:36 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/16 12:40:22 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:54:37 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ int	check_num(char **argv)
 
 long long	get_time()
 {
-	struct	timeval tv;
+	struct timeval	time;
 
-	gettimeofday(&tv, NULL);
-	return ((long long)(tv.tv_sec) * 1000 + (long long)(tv.tv_usec) / 1000);
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 /* struct timeval tv is used to store the time information. */

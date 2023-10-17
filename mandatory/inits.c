@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:50:38 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/29 14:06:24 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:57:14 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,10 @@ int	structs_init(t_data *data, int argc, char **argv)
 		data->times_to_eat = -1;
 	data->all_ate = 0;
 	data->died = 0;
-	data->time_start = 0;
-	mutex_init(&data->mutex);
+	data->time_start = get_time();
 	mutex_init(&data->print);
+	mutex_init(&data->mutex);
 	verifs(data);
-	data->philos = philo_init(data);
-	data->forks = forks_init(data->num_philos);
 	verifs2(data);
 	return (0);
 }
@@ -49,6 +47,7 @@ t_philos	*philo_init(t_data *data)
 	int			i = 0;
 
 	i = 0;
+	printf("%d", data->num_philos);
 	philos = malloc(sizeof(t_philos) * data->num_philos);
 	if (!philos)
 		return (NULL);
@@ -57,10 +56,11 @@ t_philos	*philo_init(t_data *data)
 		philos[i].id = i + 1;
 		philos[i].last_meal = get_time();
 		philos[i].times_eaten = 0;
-		philos[i].l_fork = data->forks;
+		philos[i].l_fork = &data->forks[i];
 		if (data->num_philos != 1)
 			philos[i].r_fork = &data->forks[(i + 1) % data->num_philos];
 		philos[i].data = data;
+		philos[i].thread = 0;
 		mutex_init(&philos[i].arceus);
 		i++;
 	}
@@ -78,7 +78,7 @@ pthread_mutex_t	*forks_init(int num_philo)
 		return (NULL);
 	while (i < num_philo)
 	{
-		mutex_init(forks);
+		mutex_init(&forks[i]);
 		i++;
 	}
 	return (forks);

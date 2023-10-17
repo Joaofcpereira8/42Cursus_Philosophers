@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:34:58 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/16 14:56:04 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:16:09 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int main(int argc, char **argv)
 	if (argc == 5 || argc == 6)
 	{
 		if (check_num(argv))
-			return (0);
+			return (-1);
 		if(structs_init(&data, argc, argv))
-			return (0);
+			return (-1);
 		ft_thread(&data);
 		ft_thread_join(&data);
 		free(data.forks);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:41:07 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/29 14:57:57 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:59:18 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ int	grab_forks(t_philos *phi)
 	if (phi->id % 2 == 0)
 	{
 		mutex_lock(phi->r_fork);
-		print_msg("has taken a fork", phi);
+		print_msg("has taken a fork\n", phi);
 		mutex_lock(phi->l_fork);
-		print_msg("has taken a fork", phi);
+		print_msg("has taken a fork\n", phi);
 	}
 	else
 	{
 		mutex_lock(phi->l_fork);
-		print_msg("has taken a fork", phi);
+		print_msg("has taken a fork\n", phi);
 		mutex_lock(phi->r_fork);
-		print_msg("has taken a fork", phi);
+		print_msg("has taken a fork\n", phi);
 	}
 	return (0);
 }
@@ -72,6 +72,8 @@ int	eating(t_philos *phi)
 	if (phi->data->died >= 1 || phi->data->all_ate == phi->data->num_philos)
 	{
 		mutex_unlock(&phi->data->mutex);
+		mutex_unlock(phi->r_fork);
+		mutex_unlock(phi->l_fork);
 		return (-1);
 	}
 	mutex_unlock(&phi->data->mutex);
@@ -85,6 +87,8 @@ int	eating(t_philos *phi)
 		if (phi->times_eaten == phi->data->times_to_eat)
 			phi->data->all_ate++;
 	}
+	mutex_unlock(&phi->data->mutex);
+	mutex_unlock(&phi->arceus);
 	usleep(1000 * phi->data->time_to_eat);
 	mutex_unlock(phi->r_fork);
 	mutex_unlock(phi->l_fork);

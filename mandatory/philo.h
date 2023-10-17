@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:58:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/09/29 14:26:52 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:56:45 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ pthread_mutex_t		*forks_init(int num_philo);
 
 
 /* ------mutex------ */
-int					mutex_init(pthread_mutex_t *mutex);
-int					mutex_destroy(pthread_mutex_t *mutex);
-int					mutex_lock(pthread_mutex_t *mutex);
-int					mutex_unlock(pthread_mutex_t *mutex);
+void				mutex_init(pthread_mutex_t *mutex);
+void				mutex_destroy(pthread_mutex_t *mutex);
+void				mutex_lock(pthread_mutex_t *mutex);
+void				mutex_unlock(pthread_mutex_t *mutex);
 
 /* ------utils------ */
 int					error_message(char c);
@@ -91,6 +91,6 @@ int					check_philo_ate(t_data *data);
 
 /* ------thread------ */
 void				ft_thread(t_data *data);
-int					ft_thread_join(t_data *data);
+void				ft_thread_join(t_data *data);
 
 #endif
