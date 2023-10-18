@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:50:38 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/17 17:57:14 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:22:12 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,19 @@ int	structs_init(t_data *data, int argc, char **argv)
 	data->time_start = get_time();
 	mutex_init(&data->print);
 	mutex_init(&data->mutex);
-	verifs(data);
-	verifs2(data);
+	if (verifs(data) != 0)
+		return (-1);
+	if (verifs2(data) != 0)
+		return (-1);
 	return (0);
 }
 
 t_philos	*philo_init(t_data *data)
 {
 	t_philos	*philos;
-	int			i = 0;
+	int			i;
 
 	i = 0;
-	printf("%d", data->num_philos);
 	philos = malloc(sizeof(t_philos) * data->num_philos);
 	if (!philos)
 		return (NULL);
@@ -60,7 +61,6 @@ t_philos	*philo_init(t_data *data)
 		if (data->num_philos != 1)
 			philos[i].r_fork = &data->forks[(i + 1) % data->num_philos];
 		philos[i].data = data;
-		philos[i].thread = 0;
 		mutex_init(&philos[i].arceus);
 		i++;
 	}
@@ -70,7 +70,7 @@ t_philos	*philo_init(t_data *data)
 pthread_mutex_t	*forks_init(int num_philo)
 {
 	pthread_mutex_t	*forks;
-	int i;
+	int 			i;
 
 	i = 0;
 	forks = malloc(sizeof(pthread_mutex_t) * num_philo);

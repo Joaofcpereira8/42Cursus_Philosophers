@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:58:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/17 17:56:45 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:21:21 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct s_philos
 	int				id;
 	int				times_eaten;
 	long long		last_meal;
-	pthread_t		philos;
 	pthread_t		thread;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
@@ -75,7 +74,7 @@ int					error_message(char c);
 int					verifs(t_data *data);
 int					verifs2(t_data *data);
 void				print_msg(char *msg, t_philos *philos);
-void				print_message(char *str);
+void				print_error(char *str);
 
 /* ------routine------ */
 void				*ft_routine(void *arg);

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:41:07 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/17 17:59:18 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:38:37 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_routine(void *arg)
 		return (NULL);
 	}
 	if (philos->id % 2 == 0)
-		usleep(1000);
+		usleep(2000);
 	while (philos->data->died == 0)
 	{
 		if (grab_forks(philos))
@@ -46,7 +46,7 @@ int	grab_forks(t_philos *phi)
 	if (phi->data->died >= 1 || phi->data->all_ate == phi->data->num_philos)
 	{
 		mutex_unlock(&phi->data->mutex);
-		return (-1);
+		return (1);
 	}
 	mutex_unlock(&phi->data->mutex);
 	if (phi->id % 2 == 0)
@@ -72,9 +72,9 @@ int	eating(t_philos *phi)
 	if (phi->data->died >= 1 || phi->data->all_ate == phi->data->num_philos)
 	{
 		mutex_unlock(&phi->data->mutex);
-		mutex_unlock(phi->r_fork);
 		mutex_unlock(phi->l_fork);
-		return (-1);
+		mutex_unlock(phi->r_fork);
+		return (1);
 	}
 	mutex_unlock(&phi->data->mutex);
 	mutex_lock(&phi->arceus);
@@ -89,9 +89,9 @@ int	eating(t_philos *phi)
 	}
 	mutex_unlock(&phi->data->mutex);
 	mutex_unlock(&phi->arceus);
-	usleep(1000 * phi->data->time_to_eat);
-	mutex_unlock(phi->r_fork);
+	usleep(phi->data->time_to_eat * 1000);
 	mutex_unlock(phi->l_fork);
+	mutex_unlock(phi->r_fork);
 	return (0);
 }
 
@@ -101,11 +101,11 @@ int	sleeping(t_philos *phi)
 	if (phi->data->died >= 1 || phi->data->all_ate == phi->data->num_philos)
 	{
 		mutex_unlock(&phi->data->mutex);
-		return (-1);
+		return (1);
 	}
 	mutex_unlock(&phi->data->mutex);
 	print_msg("is sleeping\n", phi);
-	usleep(1000 * phi->data->time_start);
+	usleep(phi->data->time_start * 1000);
 	return (0);
 }
 
@@ -115,7 +115,7 @@ int	thinking(t_philos *phi)
 	if (phi->data->died >= 1 || phi->data->all_ate == phi->data->num_philos)
 	{
 		mutex_unlock(&phi->data->mutex);
-		return (-1);
+		return (1);
 	}
 	mutex_unlock(&phi->data->mutex);
 	print_msg("is thinking\n", phi);
