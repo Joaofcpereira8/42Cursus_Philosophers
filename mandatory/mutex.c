@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:06:43 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/17 17:37:05 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/20 10:58:50 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 void	mutex_init(pthread_mutex_t *mutex)
 {
-	if(pthread_mutex_init(mutex, NULL))
+	if (pthread_mutex_init(mutex, NULL))
 		error_message('i');
 }
 
 void	mutex_destroy(pthread_mutex_t *mutex)
 {
-	if(pthread_mutex_destroy(mutex))
+	if (pthread_mutex_destroy(mutex))
 		error_message('d');
 }
 
 void	mutex_lock(pthread_mutex_t *mutex)
 {
-	if(pthread_mutex_lock(mutex))
+	if (pthread_mutex_lock(mutex))
 		error_message('l');
 }
 
 void	mutex_unlock(pthread_mutex_t *mutex)
 {
-	if(pthread_mutex_unlock(mutex))
+	if (pthread_mutex_unlock(mutex))
 		error_message('u');
 }

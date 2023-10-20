@@ -6,12 +6,12 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 12:58:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/18 17:21:21 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:07:36 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		PHILO_H
-# define	PHILO_H
+#ifndef PHILO_H
+# define PHILO_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -55,13 +55,12 @@ int					ft_atoi(const char *str);
 void				ft_putstr_fd(char *s, int fd);
 int					ft_isdigit(int c);
 int					check_num(char **argv);
-long long			get_time();
+long long			get_time(void);
 
 /* ------inits------ */
 t_philos			*philo_init(t_data *data);
 int					structs_init(t_data *data, int argc, char **argv);
 pthread_mutex_t		*forks_init(int num_philo);
-
 
 /* ------mutex------ */
 void				mutex_init(pthread_mutex_t *mutex);
@@ -71,9 +70,9 @@ void				mutex_unlock(pthread_mutex_t *mutex);
 
 /* ------utils------ */
 int					error_message(char c);
-int					verifs(t_data *data);
-int					verifs2(t_data *data);
-void				print_msg(char *msg, t_philos *philos);
+int					verifs(t_data *d);
+int					verifs2(t_data *d);
+void				print_msg(char *msg, t_philos *p);
 void				print_error(char *str);
 
 /* ------routine------ */

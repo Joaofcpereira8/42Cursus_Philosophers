@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:50:38 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/18 17:22:12 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:02:53 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_philos	*philo_init(t_data *data)
 pthread_mutex_t	*forks_init(int num_philo)
 {
 	pthread_mutex_t	*forks;
-	int 			i;
+	int				i;
 
 	i = 0;
 	forks = malloc(sizeof(pthread_mutex_t) * num_philo);

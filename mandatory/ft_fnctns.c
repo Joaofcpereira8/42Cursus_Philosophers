@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:00:36 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/17 16:54:37 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:06:50 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	else if (str[i] == '+')
-	i++;
+		i++;
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
 		result *= 10;
@@ -85,7 +85,7 @@ int	check_num(char **argv)
 	return (0);
 }
 
-long long	get_time()
+long long	get_time(void)
 {
 	struct timeval	time;
 

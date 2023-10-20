@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:41:07 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/18 18:38:37 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:02:28 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	sleeping(t_philos *phi)
 	}
 	mutex_unlock(&phi->data->mutex);
 	print_msg("is sleeping\n", phi);
-	usleep(phi->data->time_start * 1000);
+	usleep(phi->data->time_to_sleep * 1000);
 	return (0);
 }
 
@@ -121,5 +121,3 @@ int	thinking(t_philos *phi)
 	print_msg("is thinking\n", phi);
 	return (0);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 10:00:44 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/18 18:01:07 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:09:24 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_doc_watch(void *arg)
 {
 	t_data	*data;
 
-	data = (t_data*)arg;
+	data = (t_data *)arg;
 	while (1)
 	{
 		if (check_philo_dead(data))
@@ -54,11 +54,11 @@ int	check_philo_ate(t_data *data)
 {
 	if (data->times_to_eat == -1)
 		return (0);
-	mutex_lock(&data->mutex);
+	mutex_lock (&data->mutex);
 	if (data->all_ate == data->num_philos)
 	{
-		mutex_unlock(&data->mutex);
-		return(1);
+		mutex_unlock (&data->mutex);
+		return (1);
 	}
 	mutex_unlock(&data->mutex);
 	return (0);

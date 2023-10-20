@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/06 12:56:32 by jofilipe          #+#    #+#              #
-#    Updated: 2023/10/18 18:19:38 by jofilipe         ###   ########.fr        #
+#    Updated: 2023/10/20 10:54:11 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ WHITE   = \033[1;37m
 NAME = philo
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -pthread -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -g -pthread 
 RM = rm -rf
 
 SRCS =	mandatory/main.c\

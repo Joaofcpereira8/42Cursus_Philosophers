@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:50:25 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/18 18:31:55 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/20 10:59:31 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	ft_thread(t_data *data)
 	i = 0;
 	while (i < data->num_philos)
 	{
-		if(pthread_create(&data->philos[i].thread, NULL,
+		if (pthread_create (&data->philos[i].thread, NULL,
 				&ft_routine, &data->philos[i]) != 0)
 			print_error("Error in creating philo threads\n");
 		usleep(1000);
 		i++;
 	}
-	if(pthread_create(&data->doc, NULL, &ft_doc_watch, data) != 0)
-			print_error("Error in creating doc thread\n");
+	if (pthread_create (&data->doc, NULL, &ft_doc_watch, data) != 0)
+		print_error("Error in creating doc thread\n");
 }
 
 void	ft_thread_join(t_data *data)
