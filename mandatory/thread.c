@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:50:25 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/20 10:59:31 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:03:57 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_thread(t_data *data)
 		if (pthread_create (&data->philos[i].thread, NULL,
 				&ft_routine, &data->philos[i]) != 0)
 			print_error("Error in creating philo threads\n");
-		usleep(1000);
+		usleep(800);
 		i++;
 	}
 	if (pthread_create (&data->doc, NULL, &ft_doc_watch, data) != 0)

@@ -6,19 +6,22 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:50:38 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/20 11:02:53 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:16:57 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/* philos[i].l_fork = &data->forks: Assign the left fork of the philosopher to point to the same fork resource as the
-global data->forks. In a typical dining philosophers setup, each philosopher has a unique fork on their left side.
+/* philos[i].l_fork = &data->forks: Assign the left fork of the philosopher to
+point to the same fork resource as the global data->forks.
 
-if (data->num_philos != 1) { philos[i].r_fork = &data->forks[(i + 1) % data->num_philos]; }: This conditional
-checks if there is more than one philosopher. If there is more than one philosopher, it assigns the right fork of
+if (data->num_philos != 1)
+{ philos[i].r_fork = &data->forks[(i + 1) % data->num_philos]; }:
+This conditional checks if there is more than one philosopher.
+If there is more than one philosopher, it assigns the right fork of
 the philosopher to point to the fork at (i + 1) % data->num_philos.
-The modulo operation ensures that the rightmost philosopher's right fork points to the leftmost philosopher's
+The modulo operation ensures that the rightmost philosopher's right fork
+points to the leftmost philosopher's
 fork, creating a circular arrangement of forks. */
 
 int	structs_init(t_data *data, int argc, char **argv)

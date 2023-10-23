@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:41:07 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/10/20 11:02:28 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:57:48 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_routine(void *arg)
 		return (NULL);
 	}
 	if (philos->id % 2 == 0)
-		usleep(2000);
+		usleep(1150);
 	while (philos->data->died == 0)
 	{
 		if (grab_forks(philos))
@@ -82,7 +82,7 @@ int	eating(t_philos *phi)
 	print_msg("is eating\n", phi);
 	mutex_lock(&phi->data->mutex);
 	phi->times_eaten++;
-	if (phi->times_eaten != -1)
+	if (phi->data->times_to_eat != -1)
 	{
 		if (phi->times_eaten == phi->data->times_to_eat)
 			phi->data->all_ate++;
